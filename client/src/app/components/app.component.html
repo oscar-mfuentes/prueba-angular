@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <mat-card class="card-info">
+      <div class="search-input">
+        <mat-form-field class="full-width">
+          <input [(ngModel)]="city" matInput placeholder="Introduce el nombre de una ciudad" (keypress)="checkSearhc($event.keyCode)">
+        </mat-form-field>
+      </div>
+      <div class="search-button">
+        <button mat-raised-button color="primary" (click)="getGeoInfo()">
+          Buscar
+        </button>
+      </div>
+      <mat-list class="list-last-searchs">
+        <h3 mat-subheader>Últimas búsquedas</h3>
+        <button class="full-width" mat-button mat-raised-button color="primary" (click)="clearCities()">
+          Limpiar resultados
+        </button>
+        <mat-list-item *ngFor="let city of cities">
+          <button class="full-width" mat-button (click)="setCity(city)">
+            {{ city }}
+          </button>
+        </mat-list-item>
+      </mat-list>
+      <mat-list class="list-search-info">
+        <h3 mat-subheader>Información acerca de: {{ lastCity }}</h3>
+        <mat-list-item>Nombre Completo: {{ info.fullName }}</mat-list-item>
+        <mat-list-item>Provincia: {{ info.province }}</mat-list-item>
+        <mat-list-item>Comunidad: {{ info.community }}</mat-list-item>
+        <mat-list-item>País: {{ info.country }}</mat-list-item>
+        <mat-list-item>Población: {{ info.population }}</mat-list-item>
+        <h3 mat-subheader>El tiempo en {{ lastCity }}</h3>
+        <mat-list-item>Estación: {{ meteoInfo.stationName }}</mat-list-item>
+        <mat-list-item>Humedad relativa: {{ meteoInfo.humidity }} {{ meteoInfo.humidity && '%' }}</mat-list-item>
+        <mat-list-item>Temperatura: {{ meteoInfo.temperature }} {{ meteoInfo.temperature && '°C' }}</mat-list-item>
+        <mat-slider disabled [ngClass]="{ 'dark-blue': meteoInfo.temperature < 10, 'light-blue': meteoInfo.temperature >= 10 && meteoInfo.temperature < 15, 'green' : meteoInfo.temperature >= 15 && meteoInfo.temperature < 20, 'orange': meteoInfo.temperature >= 20 && meteoInfo.temperature < 25, 'red': meteoInfo.temperature >= 25 }" max="50" class="full-width" [value]="meteoInfo.temperature"></mat-slider>
+      </mat-list>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile *ngIf="info.coordinates">
+    <agm-map [zoom]="12" [latitude]="+info.coordinates.lat" [longitude]="+info.coordinates.lng">
+      <agm-marker *ngIf="meteoInfo.lat" [latitude]="meteoInfo.lat" [longitude]="meteoInfo.lng"></agm-marker>
+    </agm-map>
+  </mat-grid-tile>
+</mat-grid-list>
+<div class="loader" *ngIf="loading">
+  <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+</div>
+

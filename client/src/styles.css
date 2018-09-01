@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+.dark-blue .mat-slider-ticks-container
+.dark-blue .mat-slider-thumb {
+  background-color: rgb(38, 63, 175) !important;
+}
+.light-blue .mat-slider-ticks-container,
+.light-blue .mat-slider-thumb {
+  background-color: rgb(71, 147, 247) !important;
+}
+.green .mat-slider-ticks-container,
+.green .mat-slider-thumb {
+  background-color: rgb(146, 219, 253) !important;
+}
+.orange .mat-slider-ticks-container,
+.orange .mat-slider-thumb {
+  background-color: rgb(252, 235, 0) !important;
+}
+.red .mat-slider-ticks-container,
+.red .mat-slider-thumb {
+  background-color: rgb(255, 145, 0) !important;
+}
