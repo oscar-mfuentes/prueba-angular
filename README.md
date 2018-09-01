@@ -2,7 +2,7 @@
 
 #### Para poder ejecutar la aplicación es necesario tener instalado el cliente de angular y node 8 o superior (la v8.11.4 es la que yo utilizo, la LTS más reciente).
 
-#### Instrucciones para poder ejecutar la aplicación con los archivos del repositorio, se incluyen los archivos de cliente pero no los de producción por lo que tenemos que compilarlo para que funcione
+#### Instrucciones para poder ejecutar la aplicación, se incluyen los archivos de cliente pero no los de producción por lo que tenemos que compilarlo para que funcione
 
 ###### Entrar en la carpeta server y ejecutar ``` npm install ```, este comando instala las dependencias del servidor. Entrar en la carpeta client y ejecutar el mismo comando ``` npm install ``` para instalar las dependecias del cliente.
 
